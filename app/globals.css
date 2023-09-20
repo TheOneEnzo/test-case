@@ -39,7 +39,7 @@ h3{
 }
 
 .cards > *{
-  border-radius: 12px;
+  border-radius: 10px;
   object-fit: cover;
   max-width: 418px;
   width: 100%;
@@ -47,3 +47,16 @@ h3{
   object-position:100% 10%;
 }
 
+.nowPlaying{
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.nowPlaying> *{
+  width: fit-content;
+  border-radius: 5px;
+  overflow: hidden; 
+  height: 276px;
+}
