@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image"
 import Cards from "./Cards";
 import NowPlayingCards from "./NowPlayingCards";
+import TopRatedCards from "./TopRatedCards";
 import { useEffect, useState } from "react";
 
 export default function HomePage(){
@@ -10,6 +11,9 @@ export default function HomePage(){
 
   let [data, setData] = useState("")
   let [nowPlaying, SetNowPlaying] = useState("")
+  let [topRated, SetTopRated] = useState("")
+  let [show, setShow] = useState(false)
+
 
   const options = {
       method: 'GET',
@@ -24,7 +28,6 @@ export default function HomePage(){
       .then(response => response.json())
       .then(response => SetNowPlaying(response.results))
       .catch(err => console.error(err));
-      console.log(nowPlaying)
     }, [])
 
     useEffect(()=>{
@@ -32,44 +35,77 @@ export default function HomePage(){
       .then((response) => response.json())
       .then((response) => setData(response.results))
       .catch((err) => console.error(err));
-      console.log(data)
-
+    }, [])
+  
+    useEffect(()=>{
+      fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', options)
+      .then(response => response.json())
+      .then(response => SetTopRated(response.results))
+      .catch(err => console.error(err));
     }, [])
 
-  
+    function handleClick() {
+     setShow((prevState)=> !prevState) 
+    }
 
     return (
-    <section className="home">
-        <nav className="navBar">
-            <h3>Movies</h3>
-            <Image src="" width={30} height={30} />
-        </nav>
-      {/*Searchbar*/}
-        <input type="text" placeholder="Search movie titles" />
-      {/*Trending*/}
-      <h3>Trending</h3>
-      <div className="trending">
-      {data.length > 0 && (
-          <>
-            <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 1].poster_path}`} />
-            <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 2].poster_path}`} />
-          </>
-        )}
-      </div>
-      {/*Now Playing*/}
-      <h3>Now Playing</h3>
-      <div className="nowPlaying">
-      {nowPlaying.length > 0 && (
-          <>
-            <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-1].poster_path}`} />
-            <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-2].poster_path}`} />
-            <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-3].poster_path}`} />
-            <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-4].poster_path}`} />
-            <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-5].poster_path}`} />
-          </>
-        )}
-      </div>
-    </section>
+    <>
+       {
+        show && (      <section className="menu" id="hidden">
+        <Image id="closeMenu" src="" height={50} width={50}></Image>
+        <div className="options">
+          <span className="topSpan"><Image src="" width={30} height={30}></Image> Home</span>
+          <span><Image src="" width={30} height={30}></Image> Discover</span>
+        </div>
+      </section>)}
+
+      <section className="home">
+          <nav className="navBar">
+              <h3>Movies</h3>
+              <Image src="" width={30} height={30} onClick={handleClick} />
+          </nav>
+        {/*Searchbar*/}
+        <div className="searchBar">
+          <Image id="magnifyingGlass" src="./magnifying-glass-svgrepo-com.svg" width={30} height={30}></Image>
+          <input type="text" placeholder="Search movie titles" />
+        </div>
+        {/*Trending*/}
+        <h3>Trending</h3>
+        <div className="trending">
+        {data.length > 0 && (
+            <>
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 1].poster_path}`} />
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 2].poster_path}`} />
+            </>
+          )}
+        </div>
+        {/*Now Playing*/}
+        <h3>Now Playing</h3>
+        <div className="nowPlaying">
+        {nowPlaying.length > 0 && (
+            <>
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-1].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-2].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-3].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-4].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-5].poster_path}`} />
+            </>
+          )}
+        </div>
+        <h3>Top Rated</h3>
+        <div className="nowPlaying">{/*måste ändra till ett mer logiskt namn */ }
+        {topRated.length > 0 && (
+            <>
+              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-1].poster_path}`} />
+              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-2].poster_path}`} />
+              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-3].poster_path}`} />
+              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-4].poster_path}`} />
+              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-5].poster_path}`} />
+            </>
+          )}
+        </div>
+      </section>
+    </>  
 
     )
 }
