@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import HomePage from '@/components/HomePage'
 import DiscoverPage from '@/components/DiscoverPage'
 import { useState } from 'react'
+import Menu from '@/components/Menu'
 import NavigationBar from '@/components/NavigationBar'
 
 
@@ -15,13 +16,21 @@ export default function Home() {
    }
   
   function changeDiscovery(){
-    SetDiscover(prevstate => !prevstate)
+    SetDiscover(true)
+    setShow((prevState)=> !prevState) 
+
+  }
+
+  function changeHomePage(){
+    SetDiscover(false)
+    setShow((prevState)=> !prevState) 
   }
 
   return (
     <main className={styles.main}>
-    <NavigationBar click={handleClick} />
-    {discover ? <DiscoverPage /> : <HomePage handleDiscovery={changeDiscovery} state={show}/>}
+      <NavigationBar click={handleClick} />
+      {show && (<Menu handleHomePage={changeHomePage} handleDiscovery={changeDiscovery}/>)}
+      {discover ? <DiscoverPage /> : <HomePage handleDiscovery={changeDiscovery} state={show}/>}
 
     </main>
   )

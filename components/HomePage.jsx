@@ -47,9 +47,6 @@ export default function HomePage(props){
 
     return (
     <>
-       {
-        props.state && (<Menu handleDiscovery={props.handleDiscovery}/>)}
-
       <section className="home">
         {/*Searchbar*/}
         <SearchBar />
