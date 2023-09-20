@@ -5,15 +5,15 @@ import Cards from "./Cards";
 import NowPlayingCards from "./NowPlayingCards";
 import TopRatedCards from "./TopRatedCards";
 import { useEffect, useState } from "react";
+import Menu from "./Menu";
+import SearchBar from "./SearchBar";
 
-export default function HomePage(){
+export default function HomePage(props){
   
 
   let [data, setData] = useState("")
   let [nowPlaying, SetNowPlaying] = useState("")
   let [topRated, SetTopRated] = useState("")
-  let [show, setShow] = useState(false)
-
 
   const options = {
       method: 'GET',
@@ -44,31 +44,15 @@ export default function HomePage(){
       .catch(err => console.error(err));
     }, [])
 
-    function handleClick() {
-     setShow((prevState)=> !prevState) 
-    }
 
     return (
     <>
        {
-        show && (      <section className="menu" id="hidden">
-        <Image id="closeMenu" src="" height={50} width={50}></Image>
-        <div className="options">
-          <span className="topSpan"><Image src="" width={30} height={30}></Image> Home</span>
-          <span><Image src="" width={30} height={30}></Image> Discover</span>
-        </div>
-      </section>)}
+        props.state && (<Menu handleDiscovery={props.handleDiscovery}/>)}
 
       <section className="home">
-          <nav className="navBar">
-              <h3>Movies</h3>
-              <Image src="" width={30} height={30} onClick={handleClick} />
-          </nav>
         {/*Searchbar*/}
-        <div className="searchBar">
-          <Image id="magnifyingGlass" src="./magnifying-glass-svgrepo-com.svg" width={30} height={30}></Image>
-          <input type="text" placeholder="Search movie titles" />
-        </div>
+        <SearchBar />
         {/*Trending*/}
         <h3>Trending</h3>
         <div className="trending">
