@@ -28,7 +28,7 @@ h3{
 }
 
 .trending{
-  gap: 10px;
+  gap: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -46,3 +46,4 @@ h3{
   height: 100%;
   object-position:100% 10%;
 }
+
