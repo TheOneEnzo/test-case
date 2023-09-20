@@ -115,5 +115,24 @@ input{
 
 /*-----------------------------<Discover page css>------------------------------------*/
 
+.discoveryContainer{
+  margin: 21px;
+  display: flex;
+  flex-direction: column;
+}
 
+.buttonSelection{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
+.genre{
+  border: 2px solid white;
+  border-radius: 100px;
+  width: 116px;
+  height: 36px;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+}

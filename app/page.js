@@ -17,13 +17,13 @@ export default function Home() {
   
   function changeDiscovery(){
     SetDiscover(true)
-    setShow((prevState)=> !prevState) 
+    setShow((prevState)=> false) 
 
   }
 
   function changeHomePage(){
     SetDiscover(false)
-    setShow((prevState)=> !prevState) 
+    setShow((prevState)=> false) 
   }
 
   return (
