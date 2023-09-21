@@ -3,14 +3,14 @@ import SearchBar from "./SearchBar";
 import TopRatedCards from "./TopRatedCards";
 
 export default function DiscoverPage(props) {
-  const [movies, setMovies] = useState([]);
-  const [selectedGenreId, setSelectedGenreId] = useState(28);
+  let [movies, setMovies] = useState([]);
+  let [selectedGenreId, setSelectedGenreId] = useState(28);
 
-  const options = {
+  let options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer YOUR_API_KEY_HERE'
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTg2ODEwNWIwNjIwM2NkNGUzNjU3NDI5NTRjMDAyZCIsInN1YiI6IjY0ZmRiZjU2ZmZjOWRlMGVlMTc1YTJjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oD84cLkQ8gSnBQhHr73lY1GEJEOjEe9uJpx3zfrEmeg'
     }
   };
 
@@ -24,13 +24,13 @@ export default function DiscoverPage(props) {
   }, []);
 
   function selectedButton(event) {
-    const button = event.target;
-    const newGenreId = Number(button.id);
+    let button = event.target;
+    let newGenreId = Number(button.id);
     setSelectedGenreId(newGenreId);
   }
 
   // Filter movies based on the selected genre
-  const filteredMovies = movies.filter(movie => movie.genre_ids.includes(selectedGenreId));
+  let filteredMovies = movies.filter(movie => movie.genre_ids.includes(selectedGenreId));
 
   return (
     <section className="discoveryContainer">
