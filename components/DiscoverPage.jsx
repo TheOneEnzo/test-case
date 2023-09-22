@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import TopRatedCards from "./TopRatedCards";
+import NowPlayingCards from "./NowPlayingCards";
 
 export default function DiscoverPage(props) {
   let [movies, setMovies] = useState([]);
@@ -32,6 +33,8 @@ export default function DiscoverPage(props) {
   // Filter movies based on the selected genre
   let filteredMovies = movies.filter(movie => movie.genre_ids.includes(selectedGenreId));
 
+  console.log(movies);
+
   return (
     <section className="discoveryContainer">
       <SearchBar />
@@ -50,7 +53,7 @@ export default function DiscoverPage(props) {
       {filteredMovies.length > 0 ? (
         <div className="nowPlaying">
           {filteredMovies.map(movie => (
-            <TopRatedCards key={movie.id} Poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+            <NowPlayingCards key={movie.id} Poster={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} Title={movie.title}  Year={movie.release_date} />
           ))}
         </div>
       ) : (

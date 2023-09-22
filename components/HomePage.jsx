@@ -5,7 +5,6 @@ import Cards from "./Cards";
 import NowPlayingCards from "./NowPlayingCards";
 import TopRatedCards from "./TopRatedCards";
 import { useEffect, useState } from "react";
-import Menu from "./Menu";
 import SearchBar from "./SearchBar";
 
 export default function HomePage(props){
@@ -43,8 +42,7 @@ export default function HomePage(props){
       .then(response => SetTopRated(response.results))
       .catch(err => console.error(err));
     }, [])
-
-    console.log(nowPlaying);
+    console.log(data);
     return (
     <>
       <section className="home">
@@ -55,8 +53,8 @@ export default function HomePage(props){
         <div className="trending">
         {data.length > 0 && (
             <>
-              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 1].poster_path}`} />
-              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 2].poster_path}`} />
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 1].poster_path}`} Title={data[data.length-1].original_title} Year={data[data.length-1].release_date} />
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 2].poster_path}`} Title={data[data.length-2].original_title} Year={data[data.length-2].release_date}/>
             </>
           )}
         </div>
@@ -66,10 +64,10 @@ export default function HomePage(props){
         {nowPlaying.length > 0 && (
             <>
               <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-1].poster_path}`} Title={nowPlaying[nowPlaying.length-1].original_title} Year={nowPlaying[nowPlaying.length-1].release_date} />
-              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-2].poster_path}`} />
-              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-3].poster_path}`} />
-              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-4].poster_path}`} />
-              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-5].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-2].poster_path}`} Title={nowPlaying[nowPlaying.length-2].original_title} Year={nowPlaying[nowPlaying.length-2].release_date} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-3].poster_path}`} Title={nowPlaying[nowPlaying.length-3].original_title} Year={nowPlaying[nowPlaying.length-3].release_date} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-4].poster_path}`} Title={nowPlaying[nowPlaying.length-4].original_title} Year={nowPlaying[nowPlaying.length-4].release_date}/>
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-5].poster_path}`} Title={nowPlaying[nowPlaying.length-5].original_title} Year={nowPlaying[nowPlaying.length-5].release_date}/>
             </>
           )}
         </div>
@@ -77,11 +75,11 @@ export default function HomePage(props){
         <div className="nowPlaying">{/*måste ändra till ett mer logiskt namn */ }
         {topRated.length > 0 && (
             <>
-              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-1].poster_path}`} />
-              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-2].poster_path}`} />
-              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-3].poster_path}`} />
-              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-4].poster_path}`} />
-              <TopRatedCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-5].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-1].poster_path}`} Title={topRated[topRated.length-1].original_name} Year={topRated[topRated.length-1].first_air_date} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-2].poster_path}`} Title={topRated[topRated.length-2].original_name} Year={topRated[topRated.length-2].first_air_date} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-3].poster_path}`} Title={topRated[topRated.length-3].original_name} Year={topRated[topRated.length-3].first_air_date}/>
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-4].poster_path}`} Title={topRated[topRated.length-4].original_name} Year={topRated[topRated.length-4].first_air_date}/>
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-5].poster_path}`} Title={topRated[topRated.length-5].original_name} Year={topRated[topRated.length-5].first_air_date}/>
             </>
           )}
         </div>

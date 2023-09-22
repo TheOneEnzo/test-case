@@ -33,6 +33,7 @@ h3{
 }
 
 .trending{
+  position: relative;
   gap: 20px;
   display: flex;
   flex-direction: row;
@@ -87,8 +88,36 @@ h3{
   opacity: 1;
 }
 
+.hover{
+  position: absolute; 
+  top: 0;
+  z-index: 3;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100px; /* Need a specific value to work */
+}
+
+.title{
+  margin-top: 80%;
+}
+
+.hover>*{
+  color: white;
+
+}
+
+.year{
+  text-align: center;
+}
+
 .searchBar{
   position: relative;
+}
+
+.banner{
+  
 }
 
 input{
