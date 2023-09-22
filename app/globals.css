@@ -43,6 +43,29 @@ h3{
 .cards{
   min-width: 388px; 
   height: 220px; 
+  position: relative;
+}
+
+.banner{
+  position: absolute;
+  height: 100px;
+  top: 0;
+  z-index: 10;
+  background-image: linear-gradient(to right, rgba(0,0,0,1),rgba(255,255,255,0));
+  display: flex;
+  height: auto;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.bannerTitle{
+  margin: 0px 0px 10px 10px;
+  color: white;
+}
+
+.bannerYear{
+  margin: 0px 0px 10px 10px;
+  color: white;
 }
 
 .cards > *{
@@ -114,10 +137,6 @@ h3{
 
 .searchBar{
   position: relative;
-}
-
-.banner{
-  
 }
 
 input{
@@ -238,11 +257,6 @@ input{
   }
   .verticalCards> *{
     height: 382px;
-  }
-
-  .cards{
-    height: 382px;
-    width: 45%;
   }
 
   .searchBar{
