@@ -1,3 +1,6 @@
+/*-----------------------------<HomePage and components>------------------------------------*/
+
+
 html,
 body{
   margin: 0;
@@ -6,9 +9,11 @@ body{
 }
 
 .navBar{
-  top: 0;
+  padding-left: 17px;
+  padding-top: 15px;
+  padding-right: 17px;
+  margin-bottom: -10px;
   display: flex;
-  margin-bottom: 10px;
   justify-content: space-between;
 }
 .navBar>*{
@@ -125,6 +130,7 @@ input{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .genre{
@@ -141,3 +147,33 @@ input{
   background-color: white;
   color: black;
 }
+
+/*-----------------------------<Breakpoint css>------------------------------------*/
+
+@media screen and (min-width: 800px) {
+
+  html,
+  body{
+    background-color: blue;
+  }
+  .main{
+    display: grid;
+    grid-template-columns: 0.3fr 1fr; 
+  }
+
+  .menu{
+    position: static;
+    width: 100%;
+    height: 100%;
+    grid-column-start: 1;
+    grid-column-end: -3;
+    border-right: 1px solid gray;
+  }
+
+  .home{
+    grid-column-start: -2;
+    grid-column-end: -1;
+  }
+  
+}
+
