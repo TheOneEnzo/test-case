@@ -39,7 +39,16 @@ export default function Home() {
     setShow((prevState)=> false) 
   }
 
-  
+  useEffect(()=>{
+    if (windowWidth >= 800) {
+      setShow(true)
+    }
+    else{
+      setShow(false)
+    }
+
+  }, [windowWidth])
+
   return (
     <main className={`${styles.main} main`}>
         {windowWidth<=800 && <NavigationBar click={handleClick} />}

@@ -4,7 +4,6 @@
 html,
 body{
   margin: 0;
-  height: 100vh;
   background-color: #1A1A1A;
 }
 
@@ -152,22 +151,17 @@ input{
 
 @media screen and (min-width: 800px) {
 
-  html,
-  body{
-    background-color: blue;
-  }
   .main{
     display: grid;
-    grid-template-columns: 0.3fr 1fr; 
+    grid-template-columns: 278px 1fr; 
   }
 
   .menu{
-    position: static;
-    width: 100%;
-    height: 100%;
+    position: fixed;
     grid-column-start: 1;
     grid-column-end: -3;
     border-right: 1px solid gray;
+    width: 278px;
   }
 
   .home{
@@ -175,5 +169,29 @@ input{
     grid-column-end: -1;
   }
   
+  .options{
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .options>*{
+    margin: 0;
+  }
+
+  #title{
+    margin-top: 39px;
+    color: white;
+    text-align: center;
+    margin-bottom: -50%;
+  }
+  .verticalCards> *{
+    height: 382px;
+  }
+
+  .cards{
+    height: 382px;
+    width: 45%;
+  }
 }
 
