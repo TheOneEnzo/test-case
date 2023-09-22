@@ -30,13 +30,17 @@ export default function Home() {
   
   function changeDiscovery(){
     SetDiscover(true)
-    setShow((prevState)=> false) 
+    if (windowWidth<=800) {
+      setShow((prevState)=> false)       
+    }
 
   }
 
   function changeHomePage(){
     SetDiscover(false)
-    setShow((prevState)=> false) 
+    if (windowWidth<=800) {
+      setShow((prevState)=> false)       
+    }
   }
 
   useEffect(()=>{

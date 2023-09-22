@@ -164,7 +164,8 @@ input{
     width: 278px;
   }
 
-  .home{
+  .home,
+  .discoveryContainer{
     grid-column-start: -2;
     grid-column-end: -1;
   }
@@ -192,6 +193,10 @@ input{
   .cards{
     height: 382px;
     width: 45%;
+  }
+
+  .searchBar{
+    width: 385px;
   }
 }
 
