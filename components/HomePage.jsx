@@ -44,7 +44,7 @@ export default function HomePage(props){
       .catch(err => console.error(err));
     }, [])
 
-
+    console.log(nowPlaying);
     return (
     <>
       <section className="home">
@@ -65,7 +65,7 @@ export default function HomePage(props){
         <div className="nowPlaying">
         {nowPlaying.length > 0 && (
             <>
-              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-1].poster_path}`} />
+              <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-1].poster_path}`} Title={nowPlaying[nowPlaying.length-1].original_title} Year={nowPlaying[nowPlaying.length-1].release_date} />
               <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-2].poster_path}`} />
               <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-3].poster_path}`} />
               <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${nowPlaying[nowPlaying.length-4].poster_path}`} />

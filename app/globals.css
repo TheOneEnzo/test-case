@@ -59,11 +59,32 @@ h3{
   flex-direction: row;
 }
 
-.verticalCards> *{
+.verticalCards {
+  position: relative;
   width: fit-content;
   border-radius: 5px;
-  overflow: hidden; 
+  overflow: hidden;
   height: 276px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.verticalCards::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.verticalCards:hover {
+  border: 2px solid white;
+}
+
+.verticalCards:hover::before {
+  opacity: 1;
 }
 
 .searchBar{
