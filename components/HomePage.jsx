@@ -42,7 +42,6 @@ export default function HomePage(props){
       .then(response => SetTopRated(response.results))
       .catch(err => console.error(err));
     }, [])
-    console.log(data);
     return (
     <>
       <section className="home">

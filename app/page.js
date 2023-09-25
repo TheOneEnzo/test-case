@@ -30,6 +30,10 @@ export default function Home() {
   
   function changeDiscovery(){
     SetDiscover(true)
+    document.querySelector(".bottomSpan").style.fontWeight = "bold"
+    document.querySelector(".bottomSpan").style.opacity = "100%"
+    document.querySelector(".topSpan").style.fontWeight = ""
+    document.querySelector(".topSpan").style.opacity = "50%"
     if (windowWidth<=800) {
       setShow((prevState)=> false)       
     }
@@ -38,6 +42,10 @@ export default function Home() {
 
   function changeHomePage(){
     SetDiscover(false)
+    document.querySelector(".topSpan").style.fontWeight = "bold"
+    document.querySelector(".topSpan").style.opacity = "100%"
+    document.querySelector(".bottomSpan").style.fontWeight = ""
+    document.querySelector(".bottomSpan").style.opacity = "50%"
     if (windowWidth<=800) {
       setShow((prevState)=> false)       
     }
