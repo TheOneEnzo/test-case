@@ -9,12 +9,12 @@ export default function Menu(props){
         {props.width>=800 && <h1 id="title">Movies</h1>}
         <div className="options">
           <div className="menuContainer top">
-            <Image id="test" src={HomePicture} width={30} height={30}></Image>
+            <Image id="test" src={HomePicture} width={30} height={30} alt="HomeIcon"></Image>
             <span onClick={props.handleHomePage} className="topSpan">Home</span>
           </div>
           <div className="menuContainer">
-            <Image id="test" src={CompassIcon} width={30} height={30}></Image>
-            <span onClick={props.handleDiscovery} className="bottomSpan"> Discover</span>
+            <Image id="test" src={CompassIcon} width={30} height={30} alt="DiscoverIcon"></Image>
+            <span onClick={props.handleDiscovery} className="bottomSpan">Discover</span>
           </div>
 
         </div>
