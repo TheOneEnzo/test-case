@@ -10,7 +10,7 @@ import SearchBar from "./SearchBar";
 export default function HomePage(props){
   
 
-  let [data, setData] = useState("")
+  let [trending, setTrending] = useState("")
   let [nowPlaying, SetNowPlaying] = useState("")
   let [topRated, SetTopRated] = useState("")
 
@@ -21,7 +21,7 @@ export default function HomePage(props){
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTg2ODEwNWIwNjIwM2NkNGUzNjU3NDI5NTRjMDAyZCIsInN1YiI6IjY0ZmRiZjU2ZmZjOWRlMGVlMTc1YTJjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.oD84cLkQ8gSnBQhHr73lY1GEJEOjEe9uJpx3zfrEmeg'
       }
     };
-
+      //NOW PLAYING, TRENDING AND TOP RATED API 
     useEffect(()=>{
       fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
       .then(response => response.json())
@@ -32,7 +32,7 @@ export default function HomePage(props){
     useEffect(()=>{
       fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
       .then((response) => response.json())
-      .then((response) => setData(response.results))
+      .then((response) => setTrending(response.results))
       .catch((err) => console.error(err));
     }, [])
   
@@ -45,19 +45,23 @@ export default function HomePage(props){
     return (
     <>
       <section className="home">
-        {/*Searchbar*/}
+
         <SearchBar />
-        {/*Trending*/}
+
+        {/* TRENDING */}
+
         <h3>Trending</h3>
         <div className="trending">
-        {data.length > 0 && (
+        {trending.length > 0 && (
             <>
-              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 1].poster_path}`} Title={data[data.length-1].original_title} Year={data[data.length-1].release_date} />
-              <Cards Poster={`https://image.tmdb.org/t/p/w500${data[data.length - 2].poster_path}`} Title={data[data.length-2].original_title} Year={data[data.length-2].release_date}/>
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${trending[trending.length - 1].poster_path}`} Title={trending[trending.length-1].original_title} Year={trending[trending.length-1].release_date} />
+              <Cards Poster={`https://image.tmdb.org/t/p/w500${trending[trending.length - 2].poster_path}`} Title={trending[trending.length-2].original_title} Year={trending[trending.length-2].release_date}/>
             </>
           )}
         </div>
-        {/*Now Playing*/}
+
+        {/* NOWPLAYING */}
+
         <h3>Now Playing</h3>
         <div className="nowPlaying">
         {nowPlaying.length > 0 && (
@@ -70,8 +74,11 @@ export default function HomePage(props){
             </>
           )}
         </div>
+
+        {/* TOPRATED */}
+
         <h3>Top Rated</h3>
-        <div className="nowPlaying">{/*måste ändra till ett mer logiskt namn */ }
+        <div className="nowPlaying">
         {topRated.length > 0 && (
             <>
               <NowPlayingCards Poster={`https://image.tmdb.org/t/p/w500${topRated[topRated.length-1].poster_path}`} Title={topRated[topRated.length-1].original_name} Year={topRated[topRated.length-1].first_air_date} />

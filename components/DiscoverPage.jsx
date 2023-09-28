@@ -7,6 +7,7 @@ export default function DiscoverPage(props) {
   let [movies, setMovies] = useState([]);
   let [selectedGenreId, setSelectedGenreId] = useState(28);
 
+  /*SORTING API*/
   let options = {
     method: 'GET',
     headers: {
@@ -24,16 +25,16 @@ export default function DiscoverPage(props) {
       .catch(err => console.error(err));
   }, []);
 
+  //GETS BUTTON ID AND SET STATE AS BUTTON ID
+
   function selectedButton(event) {
     let button = event.target;
     let newGenreId = Number(button.id);
     setSelectedGenreId(newGenreId);
   }
 
-  // Filter movies based on the selected genre
+  // FILTER MOVIES BASED ON ID
   let filteredMovies = movies.filter(movie => movie.genre_ids.includes(selectedGenreId));
-
-  console.log(movies);
 
   return (
     <section className="discoveryContainer">
@@ -50,6 +51,7 @@ export default function DiscoverPage(props) {
         <button className={`genre ${selectedGenreId === 10752 ? 'selected' : ''}`} id="10752" onClick={selectedButton}>War</button>
         {/* Add more genre buttons here */}
       </div>
+        {/* CREATES NowPlayingCards FOR EACH MOVIE IN THE FILTERED LISTS OF MOVIES */}
       {filteredMovies.length > 0 ? (
         <div className="nowPlaying">
           {filteredMovies.map(movie => (
