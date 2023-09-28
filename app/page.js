@@ -12,6 +12,7 @@ export default function Home() {
   let [show, setShow] = useState(false)
   let [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  // GETS WINDOW WIDTH
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -27,6 +28,7 @@ export default function Home() {
   function handleClick() {
     setShow((prevState)=> !prevState) 
    }
+  
   
   function changeDiscovery(){
     SetDiscover(true)
